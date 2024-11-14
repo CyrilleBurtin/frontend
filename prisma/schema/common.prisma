@@ -1,0 +1,17 @@
+enum Role {
+  CANDIDATE
+  ADMIN
+  RECRUITER
+}
+
+enum Stack {
+  ANGULAR
+  EMBER
+  JQUERY
+  NEXT
+  OTHER
+  PREACT
+  REACT
+  SVELTE
+  VUE
+}

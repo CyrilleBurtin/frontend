@@ -1,0 +1,8 @@
+model Company {
+  id         String @id @unique @default(cuid())
+  Name       String
+  email      String @unique
+  password   String
+  recruiters User[]
+  jobList    Job[]
+}

@@ -1,0 +1,37 @@
+model Job {
+  id           String        @id @unique @default(cuid())
+  Title        String
+  authorId     String
+  author       String
+  salary       Int?
+  candidates   User[]
+  createdAt    DateTime?     @default(now())
+  city         String?
+  stack        Stack?
+  status       JobStatus?
+  updatedAt    DateTime?     @updatedAt
+  contractType ContractType?
+  userId       String
+  Company      Company?      @relation(fields: [companyId], references: [id])
+  companyId    String?
+}
+
+enum JobStatus {
+  ACTIVE
+  CLOSED
+  PENDING
+}
+
+enum ContractType {
+  CDI
+  CDD
+  FREELANCE
+  STAGE
+  ALTERNANCE
+}
+
+enum Remote {
+  ONSITE
+  HYBRIDE
+  REMOTE
+}
