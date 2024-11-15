@@ -1,6 +1,6 @@
 model Job {
   id           String        @id @unique @default(cuid())
-  Title        String
+  title        String
   authorId     String
   author       String
   salary       Int?
@@ -12,7 +12,7 @@ model Job {
   updatedAt    DateTime?     @updatedAt
   contractType ContractType?
   userId       String
-  Company      Company?      @relation(fields: [companyId], references: [id])
+  company      Company?      @relation(fields: [companyId], references: [id])
   companyId    String?
 }
 
