@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card';
 import { deleteUser } from '@/features/user/api/user-action';
 import { UserTypes } from '@/features/user/types/UserTypes';
-import { isoToDate } from '@/lib/utils/date';
+import { isoToDate } from '@/lib/utils/date/date';
 
 const UserCard = ({
   firstname,
