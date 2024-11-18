@@ -10,7 +10,7 @@ model User {
   appliedJobs String[]
   stack       Stack[]
   createdJobs String[]
-  company     Company?  @relation(fields: [companyId], references: [id])
   companyId   String?
   job         Job[]
+  active      Boolean   @default(true)
 }
