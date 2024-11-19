@@ -105,7 +105,7 @@ const UserRegistrationForm = () => {
                     field.onChange(value);
                   }}
                 >
-                  {Object.values(STACK).map((stack) => (
+                  {STACK.map((stack) => (
                     <ToggleGroupItem key={stack} value={stack}>
                       {stack}
                     </ToggleGroupItem>
