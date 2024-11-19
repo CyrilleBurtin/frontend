@@ -10,35 +10,35 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { STACK } from '@/constants/stack';
 import { registerUser } from '@/features/user/api/user-action';
-import {
-  type UserSchema,
-  userSchema,
-} from '@/features/user/schemas/UserSchema';
+import { UserSchemaType, userSchema } from '@/features/user/schemas/UserSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { redirect } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 const UserRegistrationForm = () => {
-  const form = useForm<UserSchema>({
+  const form = useForm<UserSchemaType>({
     resolver: zodResolver(userSchema),
     defaultValues: {
       firstname: '',
       name: '',
       email: '',
       password: '',
+      stack: [],
     },
     mode: 'onChange',
   });
 
-  const onSubmit = async (formData: FormData) => {
+  const onSubmit = async (formData: UserSchemaType) => {
     await registerUser(formData);
     redirect('/');
   };
 
   return (
     <Form {...form}>
-      <form action={onSubmit} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="firstname"
@@ -91,40 +91,33 @@ const UserRegistrationForm = () => {
             </FormItem>
           )}
         />
-
+        <FormField
+          control={form.control}
+          name="stack"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Ma stack</FormLabel>
+              <FormControl>
+                <ToggleGroup
+                  type="multiple"
+                  value={field.value}
+                  onValueChange={(value) => {
+                    field.onChange(value);
+                  }}
+                >
+                  {Object.values(STACK).map((stack) => (
+                    <ToggleGroupItem key={stack} value={stack}>
+                      {stack}
+                    </ToggleGroupItem>
+                  ))}
+                </ToggleGroup>
+              </FormControl>
+            </FormItem>
+          )}
+        />
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-
-    /* <div>
-        <label>Job Applications</label>
-        {formData.JobApplications.map((app, index) => (
-          <input
-            key={index}
-            type="text"
-            value={app}
-            onChange={(e) => handleArrayChange("JobApplications", index, e.target.value)}
-          />
-        ))}
-        <button type="button" onClick={() => addArrayField("JobApplications")}>
-          Add Job Application
-        </button>
-      </div>
-
-      <div>
-        <label>Stack</label>
-        {formData.stack.map((tech, index) => (
-          <input
-            key={index}
-            type="text"
-            value={tech}
-            onChange={(e) => handleArrayChange("stack", index, e.target.value)}
-          />
-        ))}
-        <button type="button" onClick={() => addArrayField("stack")}>
-          Add Technology
-        </button>
-      </div> */
   );
 };
 

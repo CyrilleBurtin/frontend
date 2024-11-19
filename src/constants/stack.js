@@ -1,0 +1,11 @@
+export const STACK = {
+  ANGULAR: 'ANGULAR',
+  EMBER: 'EMBER',
+  JQUERY: 'JQUERY',
+  NEXT: 'NEXT',
+  OTHER: 'OTHER',
+  PREACT: 'PREACT',
+  REACT: 'REACT',
+  SVELTE: 'SVELTE',
+  VUE: 'VUE',
+};

@@ -22,6 +22,7 @@ export const userSchema = z.object({
     .regex(new RegExp('.*[a-z].*'))
     .regex(new RegExp('.*[0-9].*'))
     .regex(new RegExp('.*[`~<>?,./!@#$%^&*()\\-_+="\'|{}\\[\\];:\\\\].*')),
+  stack: z.array(z.string()),
 });
 
-export type UserSchema = z.infer<typeof userSchema>;
+export type UserSchemaType = z.infer<typeof userSchema>;

@@ -1,6 +1,6 @@
 'use server';
 
-import { userSchema } from '@/features/user/schemas/UserSchema';
+import { UserSchemaType, userSchema } from '@/features/user/schemas/UserSchema';
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
@@ -9,14 +9,18 @@ const prisma = new PrismaClient();
 export const getUser = async () => {
   try {
     const users = await prisma.user.findMany({
-      /*      where: {
+      where: {
         active: true,
-      },*/
+      },
+      orderBy: {
+        createdAt: 'asc',
+      },
       select: {
         id: true,
         firstname: true,
         name: true,
         email: true,
+        stack: true,
         active: true,
       },
     });
@@ -32,10 +36,9 @@ export const getUser = async () => {
   }
 };
 
-export const registerUser = async (formData: FormData) => {
-  const data = Object.fromEntries(formData);
-  const parsedData = userSchema.safeParse(data);
-  console.log(parsedData);
+export const registerUser = async (formData: UserSchemaType) => {
+  const parsedData = userSchema.safeParse(formData);
+
   if (!parsedData.success) {
     return { error: parsedData.error.format() };
   }
@@ -43,6 +46,7 @@ export const registerUser = async (formData: FormData) => {
   const user = await prisma.user.create({
     data: { ...parsedData.data },
   });
+
   console.log('Données validées:', parsedData.data);
 
   return { user };

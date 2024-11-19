@@ -1,5 +1,6 @@
 'use client';
 
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -20,6 +21,7 @@ const UserCard = ({
   createdAt,
   id,
   active,
+  stack = [],
 }: UserTypes) => {
   const handleClick = async (id: string, active: boolean) => {
     await deleteUser({ id, active });
@@ -35,6 +37,13 @@ const UserCard = ({
           ></div>
         </CardTitle>
         <CardDescription>{email}</CardDescription>
+        <CardContent>
+          {stack.map((framework) => (
+            <Badge variant="outline" key={framework}>
+              {framework}
+            </Badge>
+          ))}
+        </CardContent>
       </CardHeader>
       <CardContent>
         {createdAt ? (
