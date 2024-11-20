@@ -13,7 +13,10 @@ import { Input } from '@/components/ui/input';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { STACK } from '@/constants/stack';
 import { registerUser } from '@/features/user/api/user-action';
-import { UserSchemaType, userSchema } from '@/features/user/schemas/UserSchema';
+import {
+  type UserSchemaType,
+  userSchema,
+} from '@/features/user/schemas/userSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { redirect } from 'next/navigation';
 import { useForm } from 'react-hook-form';
