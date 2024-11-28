@@ -12,36 +12,36 @@ import {
 import { Input } from '@/components/ui/input';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { STACK } from '@/constants/stack';
-import { registerUser } from '@/features/user/api/registerNewUser/action';
+import { registerUser } from '@/features/user/api/action';
 import {
   type UserSchemaType,
   userSchema,
 } from '@/features/user/schemas/userSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useActionState } from 'react';
+import { redirect } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-
-const initialState = {
-  firstname: '',
-  name: '',
-  email: '',
-  password: '',
-  stack: [],
-};
 
 const UserRegistrationForm = () => {
   const form = useForm<UserSchemaType>({
     resolver: zodResolver(userSchema),
-    defaultValues: initialState,
+    defaultValues: {
+      firstname: '',
+      name: '',
+      email: '',
+      password: '',
+      stack: [],
+    },
     mode: 'onChange',
   });
 
-  const [data, action, isPending] = useActionState(registerUser, null);
+  const onSubmit = async (formData: UserSchemaType) => {
+    await registerUser(formData);
+    redirect('/');
+  };
 
-  console.log({ data });
   return (
     <Form {...form}>
-      <form action={action} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="firstname"
@@ -107,7 +107,6 @@ const UserRegistrationForm = () => {
                   onValueChange={(value) => {
                     field.onChange(value);
                   }}
-                  className="flex flex-wrap"
                 >
                   {STACK.map((stack) => (
                     <ToggleGroupItem key={stack} value={stack}>
@@ -119,9 +118,7 @@ const UserRegistrationForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isPending}>
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   );

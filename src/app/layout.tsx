@@ -1,7 +1,15 @@
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import React from 'react';
+import Image from 'next/image';
 
+import LoginBar from '../features/header/LoginBar';
+import UserBar from '../features/header/UserBar';
 import './globals.css';
 
 const geistSans = localFont({
@@ -25,11 +33,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const logged = false;
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="flex flex justify-between items-center gap-4 px-4">
+          <Image
+            src="/logo.png"
+            width="80"
+            height="80"
+            alt="logo frontend jobs"
+          />
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {logged ? <UserBar /> : <LoginBar />}
+        </header>
         {children}
       </body>
     </html>

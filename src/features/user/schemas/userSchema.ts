@@ -6,14 +6,8 @@ const messages = {
 };
 
 export const userSchema = z.object({
-  firstname: z
-    .string()
-    .min(2, { message: messages.toShort })
-    .max(20, { message: messages.toLong }),
-  name: z
-    .string()
-    .min(2, { message: messages.toShort })
-    .max(20, { message: messages.toLong }),
+  firstname: z.string().min(2, messages.toShort).max(20, messages.toLong),
+  name: z.string().min(2, messages.toShort).max(20, messages.toLong),
   email: z.string().email(),
   password: z
     .string()
@@ -22,7 +16,7 @@ export const userSchema = z.object({
     .regex(new RegExp('.*[a-z].*'))
     .regex(new RegExp('.*[0-9].*'))
     .regex(new RegExp('.*[`~<>?,./!@#$%^&*()\\-_+="\'|{}\\[\\];:\\\\].*')),
-  stack: z.array(z.string()),
+  stack: z.array(z.string()).optional(),
 });
 
 export type UserSchemaType = z.infer<typeof userSchema>;

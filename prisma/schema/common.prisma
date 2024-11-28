@@ -1,6 +1,6 @@
 enum Role {
-  CANDIDATE
   ADMIN
+  CANDIDATE
   RECRUITER
 }
 

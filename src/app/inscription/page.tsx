@@ -1,9 +1,9 @@
-import UserRegistrationForm from '@/features/user/components/UserRegistrationForm/UserRegistrationForm';
+import UserRegistrationFormAction from '@/features/user/components/UserRegistrationForm/UserRegistrationForm';
 
 const Registration = () => {
   return (
     <>
-      <UserRegistrationForm />
+      <UserRegistrationFormAction />
     </>
   );
 };

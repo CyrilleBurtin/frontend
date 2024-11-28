@@ -10,8 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { deleteUser } from '@/features/user/api/user-action';
-import { UserTypes } from '@/features/user/types/UserTypes';
+import deleteUser from '@/features/user/api/deleteUser/action';
+import { UserTypes } from '@/features/user/types/userTypes';
 import { isoToDate } from '@/lib/utils/date/date';
 
 const UserCard = ({

@@ -12,7 +12,7 @@ model Job {
   updatedAt    DateTime?     @updatedAt
   contractType ContractType?
   userId       String
-  company      Company?      @relation(fields: [companyId], references: [id])
+  company      Company?      @relation(fields: [companyId], references: [id], onDelete: Cascade)
   companyId    String?
 }
 
