@@ -1,4 +1,4 @@
-import UserRegistrationFormAction from '@/features/user/components/UserRegistrationForm/UserRegistrationForm';
+import UserRegistrationFormAction from '@/features/registration/component/UserRegistrationForm';
 
 const Registration = () => {
   return (

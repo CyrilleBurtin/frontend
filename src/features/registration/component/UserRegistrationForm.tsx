@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { STACK } from '@/constants/stack';
-import { registerUser } from '@/features/user/api/registerNewUser/action';
+import { registerUser } from '@/features/registration/api/registerNewUser/action';
 import {
   type UserSchemaType,
   userSchema,
@@ -105,12 +105,18 @@ const UserRegistrationForm = () => {
                   type="multiple"
                   value={field.value}
                   onValueChange={(value) => {
+                    console.log({ value });
                     field.onChange(value);
                   }}
+                  onBlur={field.onBlur}
                   className="flex flex-wrap"
                 >
                   {STACK.map((stack) => (
-                    <ToggleGroupItem key={stack} value={stack}>
+                    <ToggleGroupItem
+                      className="flex grow w-24 border"
+                      key={stack}
+                      value={stack}
+                    >
                       {stack}
                     </ToggleGroupItem>
                   ))}

@@ -28,15 +28,17 @@ const UserCard = ({
   };
 
   return (
-    <Card key={email}>
-      <CardHeader>
-        <CardTitle className="flex justify-between">
-          {firstname} {name}
-          <div
-            className={`rounded-full h-2 w-2  ${active ? 'bg-emerald-500' : 'bg-red-600'}`}
-          ></div>
-        </CardTitle>
-        <CardDescription>{email}</CardDescription>
+    <div className="flex flex-col grow w-72">
+      <Card key={email}>
+        <CardHeader>
+          <CardTitle className="flex justify-between">
+            {firstname} {name}
+            <div
+              className={`rounded-full h-2 w-2  ${active ? 'bg-emerald-500' : 'bg-red-600'}`}
+            ></div>
+          </CardTitle>
+          <CardDescription>{email}</CardDescription>
+        </CardHeader>
         <CardContent>
           {stack.map((framework) => (
             <Badge variant="outline" key={framework}>
@@ -44,18 +46,20 @@ const UserCard = ({
             </Badge>
           ))}
         </CardContent>
-      </CardHeader>
-      <CardContent>
-        {createdAt ? (
-          <CardFooter>
-            <CardDescription>`Crée le ${isoToDate(createdAt)}`</CardDescription>
-          </CardFooter>
-        ) : null}
-        <Button onClick={() => handleClick(id, !active)}>
-          {active ? 'désactivation' : 'activation'}
-        </Button>
-      </CardContent>
-    </Card>
+        <CardContent>
+          {createdAt ? (
+            <CardFooter>
+              <CardDescription>
+                `Crée le ${isoToDate(createdAt)}`
+              </CardDescription>
+            </CardFooter>
+          ) : null}
+          <Button onClick={() => handleClick(id, !active)}>
+            {active ? 'désactivation' : 'activation'}
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

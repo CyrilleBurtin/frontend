@@ -1,9 +1,9 @@
-import {
+/*import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu';
+} from '@/components/ui/navigation-menu';*/
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Image from 'next/image';
@@ -40,20 +40,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="flex flex justify-between items-center gap-4 px-4">
+        <header className="flex justify-between items-center gap-4 px-4">
           <Image
             src="/logo.png"
             width="80"
             height="80"
             alt="logo frontend jobs"
           />
-          <NavigationMenu>
+          {/*         <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+                <NavigationMenuTrigger>FUTUR MENU</NavigationMenuTrigger>
               </NavigationMenuItem>
             </NavigationMenuList>
-          </NavigationMenu>
+          </NavigationMenu>*/}
 
           {logged ? <UserBar /> : <LoginBar />}
         </header>

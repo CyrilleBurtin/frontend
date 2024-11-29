@@ -13,7 +13,7 @@ const UserList = async () => {
           <Card>
             <CardHeader>Hello</CardHeader>
             <CardTitle>Our users</CardTitle>
-            <CardContent>
+            <CardContent className="flex flex-wrap gap-4">
               {userList.length > 0 ? (
                 userList.map((user: UserTypes) => (
                   <UserCard {...user} key={user.id} />

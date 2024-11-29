@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { STACK } from '@/constants/stack';
-import { registerUser } from '@/features/user/api/action';
+import { registerUser } from '@/features/registration/api/registerNewUser/action';
 import {
   type UserSchemaType,
   userSchema,
@@ -35,7 +35,7 @@ const UserRegistrationForm = () => {
   });
 
   const onSubmit = async (formData: UserSchemaType) => {
-    await registerUser(formData);
+    await registerUser(formData, null);
     redirect('/');
   };
 
