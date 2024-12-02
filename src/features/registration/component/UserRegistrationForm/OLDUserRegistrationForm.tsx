@@ -16,7 +16,7 @@ import { registerUser } from '@/features/registration/api/registerNewUser/action
 import {
   type UserSchemaType,
   userSchema,
-} from '@/features/user/schemas/userSchema';
+} from '@/features/registration/schemas/userSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { redirect } from 'next/navigation';
 import { useForm } from 'react-hook-form';

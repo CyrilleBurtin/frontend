@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { UserTypes } from '@/features/registration/types/userTypes';
 import getUser from '@/features/user/api/getUsers/action';
 import UserCard from '@/features/user/components/UserCard/UserCard';
-import { UserTypes } from '@/features/user/types/userTypes';
 
 const UserList = async () => {
   const userList = await getUser();

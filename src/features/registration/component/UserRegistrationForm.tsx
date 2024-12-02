@@ -13,10 +13,7 @@ import { Input } from '@/components/ui/input';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { STACK } from '@/constants/stack';
 import { registerUser } from '@/features/registration/api/registerNewUser/action';
-import {
-  type UserSchemaType,
-  userSchema,
-} from '@/features/user/schemas/userSchema';
+import { userSchema } from '@/features/registration/schemas/userSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useActionState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -30,15 +27,17 @@ const initialState = {
 };
 
 const UserRegistrationForm = () => {
-  const form = useForm<UserSchemaType>({
+  const form = useForm({
     resolver: zodResolver(userSchema),
     defaultValues: initialState,
     mode: 'onChange',
   });
 
-  const [data, action, isPending] = useActionState(registerUser, null);
+  const isValid = true;
 
-  console.log({ data });
+  const [state, action, isPending] = useActionState(registerUser, null);
+
+  console.log({ state });
   return (
     <Form {...form}>
       <form action={action} className="space-y-8">
@@ -94,6 +93,7 @@ const UserRegistrationForm = () => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="stack"
@@ -105,7 +105,8 @@ const UserRegistrationForm = () => {
                   type="multiple"
                   value={field.value}
                   onValueChange={(value) => {
-                    console.log({ value });
+                    console.log('Stack updated:', value); // Vérifiez les changements ici
+                    console.log('toto');
                     field.onChange(value);
                   }}
                   onBlur={field.onBlur}
@@ -125,7 +126,7 @@ const UserRegistrationForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isPending}>
+        <Button type="submit" disabled={isPending || !isValid}>
           Inscription
         </Button>
       </form>

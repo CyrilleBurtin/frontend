@@ -1,12 +1,14 @@
 'use server';
 
-import { userSchema } from '@/features/user/schemas/userSchema';
+import { userSchema } from '@/features/registration/schemas/userSchema';
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient();
 
 export async function registerUser(_: unknown, formData: FormData) {
+  console.log('Form Data Received:', Object.fromEntries(formData.entries()));
+
   const validatedFields = userSchema.safeParse({
     name: formData.get('name')?.toString(),
     firstname: formData.get('firstname')?.toString(),

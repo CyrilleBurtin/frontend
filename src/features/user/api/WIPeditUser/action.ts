@@ -1,6 +1,6 @@
 'use server';
 
-import { userSchema } from '@/features/user/schemas/userSchema';
+import { userSchema } from '@/features/registration/schemas/userSchema';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
