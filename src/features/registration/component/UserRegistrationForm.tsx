@@ -126,7 +126,7 @@ const UserRegistrationForm = () => {
           )}
         />
         <Button type="submit" disabled={isPending}>
-          Submit
+          Inscription
         </Button>
       </form>
     </Form>

@@ -2,6 +2,7 @@
 
 import { userSchema } from '@/features/user/schemas/userSchema';
 import { PrismaClient } from '@prisma/client';
+import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient();
 
@@ -22,7 +23,7 @@ export async function registerUser(_: unknown, formData: FormData) {
     const userData = await prisma.user.create({
       data: validatedFields.data,
     });
-
+    revalidatePath('/');
     return { userData };
   } catch (error) {
     console.error(error);

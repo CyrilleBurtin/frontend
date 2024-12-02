@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -19,12 +18,9 @@ export default function RegistrationModale() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Inscription</DialogTitle>
-          <DialogDescription>Inscriptrion</DialogDescription>
+          <DialogDescription>Inscription</DialogDescription>
         </DialogHeader>
         <UserRegistrationForm />
-        <DialogFooter>
-          <Button type="submit">Login</Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

@@ -37,28 +37,28 @@ const LoginForm = () => {
         <FormField
           control={form.control}
           name="email"
-          render={({ field }) => {
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input placeholder="email" {...field} />
               </FormControl>
               <FormMessage />
-            </FormItem>;
-          }}
+            </FormItem>
+          )}
         />
         <FormField
           control={form.control}
           name="password"
-          render={({ field }) => {
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input placeholder="password" {...field} />
               </FormControl>
               <FormMessage />
-            </FormItem>;
-          }}
+            </FormItem>
+          )}
         />
       </form>
     </Form>
