@@ -1,9 +1,3 @@
-/*import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu';*/
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Image from 'next/image';
@@ -47,13 +41,6 @@ export default function RootLayout({
             height="80"
             alt="logo frontend jobs"
           />
-          {/*         <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>FUTUR MENU</NavigationMenuTrigger>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>*/}
 
           {logged ? <UserBar /> : <LoginBar />}
         </header>
