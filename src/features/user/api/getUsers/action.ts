@@ -6,19 +6,14 @@ const prisma = new PrismaClient();
 
 const userInfoFilter = {
   id: true,
-  firstname: true,
   name: true,
   email: true,
-  stack: true,
-  active: true,
+  image: true,
 };
 
 export default async function getUser() {
   try {
     return await prisma.user.findMany({
-      where: {
-        active: true,
-      },
       orderBy: {
         createdAt: 'asc',
       },

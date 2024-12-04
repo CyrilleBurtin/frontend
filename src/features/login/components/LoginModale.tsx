@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { signIn } from 'next-auth/react';
 
 export default function LoginModale() {
   return (
@@ -36,6 +37,10 @@ export default function LoginModale() {
         <DialogFooter>
           <Button type="submit">Login</Button>
         </DialogFooter>
+      </DialogContent>
+      <DialogContent>
+        <Button onClick={() => signIn('google')}>sign in with google</Button>
+        <Button onClick={() => signIn('github')}>sign in with github</Button>
       </DialogContent>
     </Dialog>
   );

@@ -1,0 +1,9 @@
+model UserExtraInfo {
+  id          String   @id @unique @default(cuid())
+  appliedJobs String[]
+  stack       String[]
+  createdJobs String[]
+  companyId   String?
+
+  User User[]
+}

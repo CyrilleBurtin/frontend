@@ -1,9 +1,9 @@
+import SessionWrapper from '@/components/SessionWrappers';
+import Header from '@/features/header/Header';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Image from 'next/image';
 
-import LoginBar from '../features/header/LoginBar';
-import UserBar from '../features/header/UserBar';
 import './globals.css';
 
 const geistSans = localFont({
@@ -27,25 +27,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const logged = false;
-
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <header className="flex justify-between items-center gap-4 px-4">
-          <Image
-            src="/logo.png"
-            width="80"
-            height="80"
-            alt="logo frontend jobs"
-          />
-
-          {logged ? <UserBar /> : <LoginBar />}
-        </header>
-        {children}
-      </body>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <header className="flex justify-between items-center gap-4 px-4">
+            <Image
+              src="/logo.png"
+              width="80"
+              height="80"
+              alt="logo frontend jobs"
+            />
+            <Header />
+          </header>
+          {children}
+        </body>
+      </html>
+    </SessionWrapper>
   );
 }
